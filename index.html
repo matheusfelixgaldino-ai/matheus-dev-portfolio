@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#080D18" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script>
+      (() => {
+        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        let theme = systemTheme
+
+        try {
+          const savedTheme = window.localStorage.getItem('matheus-dev-theme')
+          if (savedTheme === 'light' || savedTheme === 'dark') theme = savedTheme
+        } catch {
+          // Usa a preferência do sistema quando o navegador bloquear o localStorage.
+        }
+
+        document.documentElement.dataset.theme = theme
+        document.querySelector('meta[name="theme-color"]')?.setAttribute(
+          'content',
+          theme === 'dark' ? '#080D18' : '#F8FAFC',
+        )
+      })()
+    </script>
+    <meta
+      name="description"
+      content="Conheça Matheus Felix Galdino, estudante de Ciência da Computação no 2º semestre e desenvolvedor Full Stack em formação."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Matheus Felix Galdino | Matheus.dev" />
+    <meta
+      property="og:description"
+      content="Estudante de Ciência da Computação no 2º semestre, aprendendo desenvolvimento web e buscando a primeira oportunidade de estágio em software."
+    />
+    <meta property="og:locale" content="pt_BR" />
+    <title>Matheus Felix Galdino | Desenvolvedor Full Stack em formação</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
